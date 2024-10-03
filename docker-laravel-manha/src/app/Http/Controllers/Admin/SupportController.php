@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Support;
 
 class SupportController extends Controller
 {
@@ -21,7 +22,7 @@ class SupportController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin/supports/create');
     }
 
     /**
@@ -29,7 +30,7 @@ class SupportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
