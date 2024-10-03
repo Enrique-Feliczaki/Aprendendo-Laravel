@@ -10,9 +10,10 @@ class SupportController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Support $support)
     {
-        return view('Admin/supports/index');
+        $supports = $support->all();
+        return view('Admin/supports/index', compact('supports'));
     }
 
     /**
