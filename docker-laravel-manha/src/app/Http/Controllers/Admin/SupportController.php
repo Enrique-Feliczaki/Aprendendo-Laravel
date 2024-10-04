@@ -51,17 +51,28 @@ class SupportController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Support $support, string|int $id)
     {
-        //
+        if(! $support = $support->where('id',$id)->first()){
+            return back();
+        }
+        return view('Admin/supports/edit', compact('support'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Support $support, Request $request, string $id)
     {
-        //
+        if(! $support = $support->find($id)){
+            return back();
+        }
+        $support->update($request->only([
+            'subject', 'body'
+        ]));
+        return redirect()->route('supports.index');
+        return view('Admin/supports/show', compact('support'));
+
     }
 
     /**
