@@ -78,8 +78,12 @@ class SupportController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Support $support,string|int $id)
     {
-        //
+        if(! $support = $support->find($id)){
+            return back();
+        }
+        $support->delete();
+        return redirect()->route('supports.index');
     }
 }
